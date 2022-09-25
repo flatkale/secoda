@@ -5,14 +5,11 @@ description: "This page walks through how to connect the Postgres integration"
 
 There are three steps to connect Postgres with Postgres:
 
-1. 1.  
-Create a database user
+1. Create a database user
 
-2. 2.  
-Connect Postgres to Secoda
+2. Connect Postgres to Secoda
 
-3. 3.  
-Whitelist Secoda IP Address
+3. Whitelist Secoda IP Address
 
 #### Create a Database User
 
@@ -20,23 +17,21 @@ The username and password you’ve already created for your cluster is your admi
 
 To create a new user, you’ll need to log into the Postgres database directly and run the following SQL commands:
 
-\-- Create a user named "secoda" that Secoda will use when connecting to your Postgres database. 
+\-- Create a user named "secoda" that Secoda will use when connecting to your Postgres database.
 
-CREATE USER secoda PASSWORD '<enter password here>'; 
-
+CREATE USER secoda PASSWORD '<enter password here>';
 
 \-- Complete this query for any databases you would like Secoda to extract from
 
-GRANT CONNECT ON DATABASE <database\_name> TO secoda;
+GRANT CONNECT ON DATABASE <database_name> TO secoda;
 
+\-- Complete this query for any schemas you would like Secoda to extract from
 
-\-- Complete this query for any schemas you would like Secoda to extract from 
+GRANT USAGE ON SCHEMA <schema_name> TO secoda;
 
-GRANT USAGE ON SCHEMA <schema\_name> TO secoda;
+GRANT SELECT ON ALL TABLES IN SCHEMA <schema_name> TO secoda;
 
-GRANT SELECT ON ALL TABLES IN SCHEMA <schema\_name> TO secoda;
-
-ALTER DEFAULT PRIVILEGES IN SCHEMA <schema\_name>
+ALTER DEFAULT PRIVILEGES IN SCHEMA <schema_name>
 
 GRANT SELECT ON TABLES TO secoda;
 
@@ -46,17 +41,13 @@ When connecting to Postgres in Secoda, use the username/password you’ve create
 
 After creating a Postgres user, the next step is to connect Secoda:
 
-1. 1.  
-In the Secoda App, select ‘Add Integration’ on the Integrations tab
+1. In the Secoda App, select ‘Add Integration’ on the Integrations tab
 
-2. 2.  
-Search for and select ‘Postgres’
+2. Search for and select ‘Postgres’
 
-3. 3.  
-Enter your Postgres credentials
+3. Enter your Postgres credentials
 
-4. 4.  
-Click 'Connect'
+4. Click 'Connect'
 
 ### Security
 

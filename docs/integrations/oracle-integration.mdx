@@ -7,14 +7,11 @@ description: "This page walks through the Secoda and Oracle integration that Sec
 
 There are three steps to get started using Oracle with Secoda:
 
-1. 1.  
-Create a database user
+1. Create a database user
 
-2. 2.  
-Whitelist Secoda IP Address
+2. Whitelist Secoda IP Address
 
-3. 3.  
-Connect Oracle to Secoda
+3. Connect Oracle to Secoda
 
 #### Create a Database User
 
@@ -26,18 +23,17 @@ To create a new user, you’ll need to log into the Oracle database directly and
 
 CREATE USER secoda IDENTIFIED BY '<password>';
 
-
 \-- Run this query for any schemas you'd like to import into Secoda
 
 BEGIN
 
- FOR table IN (SELECT owner, table\_name FROM all\_tables WHERE owner='<schema>') LOOP
+FOR table IN (SELECT owner, table_name FROM all_tables WHERE owner='<schema>') LOOP
 
- EXECUTE IMMEDIATE 'grant select on '||table.owner||'.'||table.table\_name||' to secoda';
+EXECUTE IMMEDIATE 'grant select on '||table.owner||'.'||table.table_name||' to secoda';
 
- END LOOP;
+END LOOP;
 
-END; 
+END;
 
 #### Whitelist Secoda IP Address
 
@@ -45,29 +41,22 @@ VPCs keep servers inaccessible to traffic from the internet. With VPC, you’re 
 
 Allow Secoda to read into your Oracle database from `35.175.75.15/32` and `34.230.160.245/32`
 
-****
+---
 
 #### Connect Oracle to Secoda
 
 After creating a Oracle user, the next step is to connect Secoda:
 
-1. 1.  
-In the Secoda App, select "New Integration" from <https://app.secoda.co/integrations>
+1. In the Secoda App, select "New Integration" from <https://app.secoda.co/integrations>
 
-2. 2.  
-Search for and select "Oracle"
+2. Search for and select "Oracle"
 
-3. 3.  
-Enter your Oracle credentials
+3. Enter your Oracle credentials
 
-4. 4.  
-Click "Test Connection"
+4. Click "Test Connection"
 
-5. 5.  
-Click "Submit"
+5. Click "Submit"
 
-6. 6.  
-Select the schemas you'd like to import and click "Submit"
+6. Select the schemas you'd like to import and click "Submit"
 
-7. 7.  
-Click "Run Initial Extraction"
+7. Click "Run Initial Extraction"
