@@ -1,4 +1,35 @@
 {
+  "name": "Secoda",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/light.svg"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#1f93ff",
+    "light": "#45a5ff",
+    "dark": "#1174d1",
+    "ultraLight": "#87c5ff",
+    "ultraDark": "#095fb0"
+  },
+  "topbarLinks": [
+    {
+      "name": "Book a Demo",
+      "url": "https://www.secoda.co/sign-up"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Sign Up",
+    "url": "https://app.secoda.co/auth/realms/master/protocol/openid-connect/registrations?client_id=secoda-frontend&response_type=code&scope=openid%20email&redirect_uri=https://app.secoda.co&kc_locale=en"
+  },
+  "anchors": [
+    {
+      "name": "Community",
+      "icon": "comments",
+      "color": "#f59f0b",
+      "url": "https://secodacommunity.slack.com/join/shared_invite/zt-mhnu278g-FktKZmZ51SDQtlu3NRAxqg#/shared-invite/email"
+    }
+  ],
   "navigation": [
     {
       "group": "Welcome",
@@ -33,28 +64,57 @@
       "group": "Integrations",
       "pages": [
         "integrations",
-        "integrations/snowflake-integration",
-        "integrations/snowflake-integration/snowflake",
-        "integrations/snowflake-integration/snowflake-metadata",
-        "integrations/bigquery-integration",
-        "integrations/bigquery-integration/big-query",
-        "integrations/bigquery-integration/bigquery-metadata",
-        "integrations/postgres-integration",
-        "integrations/postgres-integration/postgres",
-        "integrations/postgres-integration/postgres-metadata",
-        "integrations/redshift-integration",
-        "integrations/redshift-integration/redshift",
-        "integrations/redshift-integration/redshift-metadata",
+        {
+          "group": "Snowflake Integration",
+          "pages": [
+            "integrations/snowflake-integration",
+            "integrations/snowflake-integration/snowflake",
+            "integrations/snowflake-integration/snowflake-metadata"
+          ]
+        },
+        {
+          "group": "BigQuery Integration",
+          "pages": [
+            "integrations/bigquery-integration/big-query",
+            "integrations/bigquery-integration/bigquery-metadata"
+          ]
+        },
+        {
+          "group": "Postgres Integration",
+          "pages": [
+            "integrations/postgres-integration",
+            "integrations/postgres-integration/postgres",
+            "integrations/postgres-integration/postgres-metadata"
+          ]
+        },
+        {
+          "group": "Redshift Integration",
+          "pages": [
+            "integrations/redshift-integration",
+            "integrations/redshift-integration/redshift",
+            "integrations/redshift-integration/redshift-metadata"
+          ]
+        },
         "integrations/databricks-integration",
         "integrations/mysql-integration",
         "integrations/microsoft-sql-server",
         "integrations/oracle-integration",
-        "integrations/looker-integration",
-        "integrations/looker-integration/looker",
-        "integrations/looker-integration/looker-metadata",
-        "integrations/tableau-integration",
-        "integrations/tableau-integration/tableau",
-        "integrations/tableau-integration/tableau-metadata",
+        {
+          "group": "Looker Integration",
+          "pages": [
+            "integrations/looker-integration",
+            "integrations/looker-integration/looker",
+            "integrations/looker-integration/looker-metadata"
+          ]
+        },
+        {
+          "group": "Tableau Integration",
+          "pages": [
+            "integrations/tableau-integration",
+            "integrations/tableau-integration/tableau",
+            "integrations/tableau-integration/tableau-metadata"
+          ]
+        },
         "integrations/metabase",
         "integrations/mode",
         "integrations/redash",
@@ -109,38 +169,47 @@
             "features/collections/sharing-collections"
           ]
         },
-        "features/metrics",
-        "features/metrics/documenting-metrics",
-        "features/metrics/custom-properties",
-        "features/metrics/metrics-templates",
-        "features/metrics/dbt-metrics-layer-integration",
-        "features/embeds",
-        "features/docs",
-        "features/docs/using-docs",
-        "features/docs/running-queries-in-secoda",
-        "features/docs/adding-live-charts-to-documentation",
-        "features/docs/custom-properties",
-        "features/docs/documenting-queries",
-        "features/data-requests",
-        "features/data-lineage",
-        "features/personalization",
-        "features/slack-connection",
         {
-          "group": "Data Requests",
+          "group": "Metrics",
           "pages": [
+            "features/metrics",
+            "features/metrics/documenting-metrics",
+            "features/metrics/custom-properties",
+            "features/metrics/metrics-templates",
+            "features/metrics/dbt-metrics-layer-integration"
+          ]
+        },
+        "features/embeds",
+        {
+          "group": "Docs",
+          "pages": [
+            "features/docs",
+            "features/docs/using-docs",
+            "features/docs/running-queries-in-secoda",
+            "features/docs/adding-live-charts-to-documentation",
+            "features/docs/custom-properties",
+            "features/docs/documenting-queries"
+          ]
+        },
+        {
+          "group": "Managing Data Requests",
+          "pages": [
+            "features/data-requests",
             "features/data-requests/answering-questions",
             "features/data-requests/asking-questions-from-slack",
             "features/data-requests/assigning-ownership",
             "features/data-requests/question-status",
             "features/data-requests/templates"
           ]
-        }
+        },
+        "features/data-lineage",
+        "features/personalization",
+        "features/slack-connection"
       ]
     },
     {
       "group": "User Management",
       "pages": [
-        "user-management",
         "user-management/roles",
         "user-management/custom-invitation-links",
         "user-management/resource-permissions",
@@ -175,11 +244,14 @@
     {
       "group": "Policies",
       "pages": [
-        "policies",
         "policies/terms-of-use",
         "policies/privacy-policy",
         "policies/security-policy"
       ]
     }
-  ]
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/secodahq?lang=en",
+    "linkedin": "https://www.linkedin.com/company/secodahq/?originalSubdomain=ca"
+  }
 }
