@@ -1,0 +1,26 @@
+---
+title: "Postgres Integration"
+description: "An overview of the Secoda integration with Postgres"
+---
+
+[Connect Postgres](/integrations/postgres-integration/postgres)
+
+[Postgres Metadata](/integrations/postgres-integration/postgres-metadata)
+
+After connecting Postgres to Secoda, to view the metadata associated with one of your Postgres tables, visit the [catalog](https://app.secoda.co/catalog) page and click on the title of your Postgres table. That link will bring you to the following page.
+
+![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2FI4OM0RSP1Gfpq1t3bsT1%2Fimage.png?alt=media&token=c4bcfd0a-0912-46ec-8030-7a8b2c2dd9ca)
+
+**Tables**
+
+The tables associated with the schemas that have been selected in your Postgres integration will be imported. If a [comment ](https://docs.snowflake.com/en/sql-reference/sql/comment.html)is present on the table, that comment will be brought in as a description.
+
+**Columns**
+
+The columns associated with the tables will be imported into Secoda. The column name, type primary key, and comment will be brought in. Optionally, clicking the "Run Profiler" button will show a distribution of each Postgres column.
+
+**Lineage**
+
+Table and column lineage is automatically imported into Secoda. The last day of queries are parsed with our lineage parser to build a map of the relationships between columns and tables.
+
+![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2FKwK75yt7UG4tjBB1gPLR%2Fimage.png?alt=media&token=d9fe6b23-a8da-4b53-ac17-d48c4df07215)

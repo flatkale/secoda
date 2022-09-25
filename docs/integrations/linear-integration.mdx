@@ -1,0 +1,37 @@
+---
+title: "Linear Integration"
+description: "This page walks through the Secoda and Linear integration that Secoda supports"
+---
+
+## Push questions and replies to Linear 
+
+First head to [Linear's API](https://linear.app/secoda/settings/api/) page and generate a personal access token.
+
+![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2FUjGGvGsQUnSHZNJyUaoW%2FScreen%20Shot%202022-04-29%20at%209.37.43%20AM.png?alt=media&token=c1b48cb4-4923-40c6-940b-1d7bd08d899a)
+
+Next head to your Secoda workspace's settings page and find the Linear tab from the left hand menu. There you can enter the personal access key you generated. 
+
+![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2FyLBP6eMHCCWf9LuPSN7P%2FScreen%20Shot%202022-04-29%20at%209.34.51%20AM.png?alt=media&token=3144986d-2321-4708-a95f-35d625689e5b)
+
+This will enable a one way sync of Secoda's questions and question replies to Linear. To enable a bidirectional sync between Linear and Secoda, you will have to add Secoda's webhook to Linear.
+
+### Push updates from Linear to Secoda
+
+Head to [this page](https://linear.app/secoda/settings/api/webhooks/new) and create a new webhook according to the screenshot below
+
+![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2Fo2Ri2aBZ8eLFdQm50LGj%2FScreen%20Shot%202022-04-29%20at%209.44.19%20AM.png?alt=media&token=bb4802fc-160e-4619-af09-f818f83b3b34)
+
+To enable webhook integration with Linear, you will have to find out what your webhook endpoint is. If you are an on-prem customer, it will be `https://your-domain.com/api/v1/integration/linear/webhook` and if you are a cloud customer, your webhook will be `https://api.secoda.co/integration/linear/webhook`
+
+### Testing the integration
+
+If the integration is working properly, any question asked on Secoda, should automatically get added to your Linear triage.
+
+![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2FvQs85q0mFgu77wSdL3nh%2FScreen%20Shot%202022-04-29%20at%209.57.55%20AM.png?alt=media&token=4c99274b-6007-439f-806c-154ad39195de)
+
+* Assignee of the question is bi-directionally synced based on the email address of the assignee existing in both Secoda and Linear.
+
+* Updating the status of the question on Linear, automatically updates it on Secoda
+
+* Priority of the issue is bi-directionally synced with the priority of the question on Secoda
+

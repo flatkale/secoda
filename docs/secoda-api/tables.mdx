@@ -1,0 +1,405 @@
+---
+title: "Tables"
+description: "How to manage tables with the Secoda API"
+---
+
+## List All Tables
+
+Endpoint
+
+https://api.secoda.co/table/tables/
+
+Method
+
+GET
+
+The **Endpoint** field for self-hosted instances is `<host`\_`url>/api/v1/dictionary/table/tables/`For example, https://secoda.company.com/api/v1/table/tables/
+
+* Sample Response  
+{  
+"page":1,  
+"results":\[  
+{  
+"id":"7o7y2s75ktirezg6\_\_bigquery\_\_secoda-web\_\_dbt\_amcewen\_\_customers",  
+"neo4j\_id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers",  
+"created\_at":"None",  
+"updated\_at":"None",  
+"tags":\[  
+\],  
+"name":"customers",  
+"schema":"dbt\_amcewen",  
+"cluster":"secoda-web",  
+"database":"bigquery",  
+"owners":"None",  
+"description": "Description of table",  
+"columns":\[  
+\],  
+"queries":"None"  
+},  
+{  
+"id":"7o7y2s75ktirezg6\_\_bigquery\_\_secoda-web\_\_dbt\_amcewen\_\_my\_first\_dbt\_model",  
+"neo4j\_id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/my\_first\_dbt\_model",  
+"created\_at":"None",  
+"updated\_at":"None",  
+"tags":\[  
+\],  
+"name":"my\_first\_dbt\_model",  
+"schema":"dbt\_amcewen",  
+"cluster":"secoda-web",  
+"database":"bigquery",  
+"owners":"None",  
+"description": "Description of table",  
+"columns":\[  
+\],  
+"queries":"None"  
+},  
+{  
+"id":"7o7y2s75ktirezg6\_\_bigquery\_\_secoda-web\_\_dbt\_amcewen\_\_my\_second\_dbt\_model",  
+"neo4j\_id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/my\_second\_dbt\_model",  
+"created\_at":"None",  
+"updated\_at":"None",  
+"tags":\[  
+\],  
+"name":"my\_second\_dbt\_model",  
+"schema":"dbt\_amcewen",  
+"cluster":"secoda-web",  
+"database":"bigquery",  
+"owners":"None",  
+"description": "Description of table",  
+"columns":\[  
+\],  
+"queries":"None"  
+},  
+{  
+"id":"7o7y2s75ktirezg6\_\_bigquery\_\_secoda-web\_\_dbt\_amcewen\_\_stg\_customers",  
+"neo4j\_id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/stg\_customers",  
+"created\_at":"None",  
+"updated\_at":"None",  
+"tags":\[  
+\],  
+"name":"stg\_customers",  
+"schema":"dbt\_amcewen",  
+"cluster":"secoda-web",  
+"database":"bigquery",  
+"owners":"None",  
+"description": "Description of table",  
+"columns":\[  
+\],  
+"queries":"None"  
+},  
+{  
+"id":"7o7y2s75ktirezg6\_\_bigquery\_\_secoda-web\_\_dbt\_amcewen\_\_stg\_orders",  
+"neo4j\_id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/stg\_orders",  
+"created\_at":"None",  
+"updated\_at":"None",  
+"tags":\[  
+\],  
+"name":"stg\_orders",  
+"schema":"dbt\_amcewen",  
+"cluster":"secoda-web",  
+"database":"bigquery",  
+"owners":"None",  
+"description": "Description of table",  
+"columns":\[  
+\],  
+"queries":"None"  
+}  
+\]  
+}
+
+* Python Example  
+import requests  
+  
+headers \= {  
+"Authorization": "Bearer <Your Key>"  
+}  
+response \= requests.get(  
+"<https://api.secoda.co/table/>",  
+ headers\=headers  
+)  
+print(response.json())
+
+### Get Specific Table
+
+Endpoint
+
+<https://api.secoda.co/table/><:id>
+
+Method
+
+GET
+
+* Sample Response  
+{  
+"id":"7o7y2s75ktirezg6\_\_bigquery\_\_secoda-web\_\_dbt\_amcewen\_\_customers",  
+"neo4j\_id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers",  
+"created\_at":"None",  
+"updated\_at":"None",  
+"tags":\[  
+"7o7y2s75ktirezg6\~dbt\_tag"  
+\],  
+"name":"customers",  
+"schema":"dbt\_amcewen",  
+"cluster":"secoda-web",  
+"database":"bigquery",  
+"owners":"None",  
+"description": "Description of table",  
+"columns":\[  
+"customer\_id",  
+"first\_name",  
+"last\_name",  
+"first\_order\_date",  
+"most\_recent\_order\_date",  
+"number\_of\_orders"  
+\],  
+"queries":\[  
+{  
+"description":"None",  
+"query\_text":"create or replace table \`secoda-web\`.\`dbt\_amcewen\`.\`customers\`\\\\n\\\\n\\\\n OPTIONS()\\\\n as (\\\\n with customers as (\\\\n\\\\n select \* from \`secoda-web\`.\`dbt\_amcewen\`.\`stg\_customers\`\\\\n\\\\n),\\\\n\\\\norders as (\\\\n\\\\n select \* from \`secoda-web\`.\`dbt\_amcewen\`.\`stg\_orders\`\\\\n\\\\n),\\\\n\\\\ncustomer\_orders as (\\\\n\\\\n select\\\\n customer\_id,\\\\n\\\\n min(order\_date) as first\_order\_date,\\\\n max(order\_date) as most\_recent\_order\_date,\\\\n count(order\_id) as number\_of\_orders\\\\n\\\\n from orders\\\\n\\\\n group by 1\\\\n\\\\n),\\\\n\\\\n\\\\nfinal as (\\\\n\\\\n select\\\\n customers.customer\_id,\\\\n customers.first\_name,\\\\n customers.last\_name,\\\\n customer\_orders.first\_order\_date,\\\\n customer\_orders.most\_recent\_order\_date,\\\\n coalesce(customer\_orders.number\_of\_orders, 0) as number\_of\_orders\\\\n\\\\n from customers\\\\n\\\\n left join customer\_orders using (customer\_id)\\\\n\\\\n)\\\\n\\\\nselect \* from final\\\\n );",  
+"frequency":0,  
+"last\_updated\_timestamp":"None",  
+"key":""  
+},  
+{  
+"description":"None",  
+"query\_text":"SELECT \* FROM dbt\_amcewen.customers",  
+"frequency":0,  
+"last\_updated\_timestamp":"None",  
+"key":""  
+}  
+\]  
+}
+
+* Python Example  
+import requests  
+  
+headers \= {  
+"Authorization": "Bearer <Your Key>"  
+}  
+response \= requests.get(  
+"<https://api.secoda.co/table/7o7y2s75ktirezg6\_\_bigquery\_\_secoda-web\_\_dbt\_amcewen\_\_customers>",  
+ headers\=headers  
+)  
+print(response.json())
+
+
+### Update Table
+
+Endpoint
+
+<https://api.secoda.co/table/><:id>
+
+Method
+
+PUT
+
+Accepted Body Parameters
+
+owners, tags
+
+* Sample Response  
+{  
+"msg":"Successfully updated table"  
+}
+
+* Python Example  
+import requests  
+  
+headers \= {  
+"Authorization": "Bearer <Your Key>"  
+}  
+response \= requests.put(  
+"<https://api.secoda.co/table/7o7y2s75ktirezg6\_\_bigquery\_\_secoda-web\_\_dbt\_amcewen\_\_customers>",  
+ headers\=headers,  
+ json\={"owners": \["kash@secoda.co"\]}  
+)  
+print(response.json())
+
+
+### Get All Table Columns
+
+Endpoint
+
+<https://api.secoda.co/table/><:id>/columns
+
+Method
+
+GET
+
+* Sample Response  
+{  
+"page":1,  
+"size":6,  
+"results":\[  
+{  
+"id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers\~customer\_id",  
+"neo4j\_id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers\~customer\_id",  
+"created\_at":"None",  
+"updated\_at":"None",  
+"tags":\[  
+"3xqw7edwbro7m571"  
+\],  
+"name":"customer\_id",  
+"col\_type":"INTEGER",  
+"owners":\[  
+"andrew@secoda.co"  
+\],  
+"badges":"None"  
+},  
+{  
+"id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers\~first\_name",  
+"neo4j\_id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers\~first\_name",  
+"created\_at":"None",  
+"updated\_at":"None",  
+"tags":\[  
+"2w1dot2hn6ksmskj"  
+\],  
+"name":"first\_name",  
+"col\_type":"STRING",  
+"owners":\[  
+"mark@secoda.co",  
+"kash@secoda.co",  
+"andrew@secoda.co",  
+"andrewmcewen96@gmail.com"  
+\],  
+"badges":"None"  
+},  
+{  
+"id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers\~last\_name",  
+"neo4j\_id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers\~last\_name",  
+"created\_at":"None",  
+"updated\_at":"None",  
+"tags":\[  
+"ck7mwwfea59bbn7r"  
+\],  
+"name":"last\_name",  
+"col\_type":"STRING",  
+"owners":\[  
+"andrewmcewen96@gmail.com",  
+"kash@secoda.co"  
+\],  
+"badges":"None"  
+},  
+{  
+"id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers\~first\_order\_date",  
+"neo4j\_id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers\~first\_order\_date",  
+"created\_at":"None",  
+"updated\_at":"None",  
+"tags":\[  
+"ck7mwwfea59bbn7r"  
+\],  
+"name":"first\_order\_date",  
+"col\_type":"DATE",  
+"owners":\[  
+"mark@secoda.co"  
+\],  
+"badges":"None"  
+},  
+{  
+"id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers\~most\_recent\_order\_date",  
+"neo4j\_id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers\~most\_recent\_order\_date",  
+"created\_at":"None",  
+"updated\_at":"None",  
+"tags":\[  
+"2w1dot2hn6ksmskj"  
+\],  
+"name":"most\_recent\_order\_date",  
+"col\_type":"DATE",  
+"owners":\[  
+"kash@secoda.co"  
+\],  
+"badges":"None"  
+},  
+{  
+"id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers\~number\_of\_orders",  
+"neo4j\_id":"7o7y2s75ktirezg6\~bigquery://secoda-web.dbt\_amcewen/customers\~number\_of\_orders",  
+"created\_at":"None",  
+"updated\_at":"None",  
+"tags":\[  
+\],  
+"name":"number\_of\_orders",  
+"col\_type":"INTEGER",  
+"owners":\[  
+"andrew@secoda.co"  
+\],  
+"badges":"None"  
+}  
+\]  
+}
+
+* Python Example  
+import requests  
+  
+headers \= {  
+"Authorization": "Bearer <Your Key>"  
+}  
+response \= requests.get(  
+"<https://api.secoda.co/table/7o7y2s75ktirezg6\_\_bigquery\_\_secoda-web\_\_dbt\_amcewen\_\_customers/columns>",  
+ headers\=headers  
+)  
+print(response.json())
+
+
+### Update Table Column
+
+Endpoint
+
+<https://api.secoda.co/table/><:id>/columns
+
+Method
+
+PUT
+
+Accepted Body Parameters
+
+name, owners, tags, description
+
+* Sample Response  
+{  
+"msg":"Successfully updated column"  
+}
+
+* Python Example  
+import requests  
+  
+headers \= {  
+"Authorization": "Bearer <Your Key>"  
+}  
+response \= requests.put(  
+"<https://api.secoda.co/table/7o7y2s75ktirezg6\_\_bigquery\_\_secoda-web\_\_dbt\_amcewen\_\_customers/columns/>",  
+ headers\=headers,  
+ json\={"name": "number\_of\_orders", "owners": \["kash@secoda.co"\]}  
+)  
+print(response.json())
+
+
+### Delete Table Column
+
+Endpoint
+
+<https://api.secoda.co/table/><:id>/columns?name=<col\_name>
+
+Method
+
+DELETE
+
+Accepted Body Parameters
+
+name
+
+* Sample Response  
+''
+
+* Python Example  
+import requests  
+  
+headers \= {  
+"Authorization": "Bearer <Your Key>"  
+}  
+response \= requests.delete(  
+"<https://api.secoda.co/table/7o7y2s75ktirezg6\_\_bigquery\_\_secoda-web\_\_dbt\_amcewen\_\_customers/columns?name=number\_of\_orders>",  
+ headers\=headers  
+)  
+print(response.json())  
+  
+Not using Secoda to manage your data knowledge yet? Sign up for free [here](https://app.secoda.co) 👈

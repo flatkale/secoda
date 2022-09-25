@@ -1,0 +1,30 @@
+---
+title: "Snowflake Integration"
+description: "An overview for the Snowflake integration with Secoda"
+---
+
+[Connect Snowflake](/integrations/snowflake-integration/snowflake)
+
+[Snowflake Metadata](/integrations/snowflake-integration/snowflake-metadata)
+
+After connecting Snowflake, to view the metadata associated with one of your Snowflake tables, visit the [catalog](https://app.secoda.co/catalog) page and click on the title of your Snowflake table. That link will bring you to the following page.
+
+![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2F4j4Ez61AKSen0wI73kfu%2Fimage.png?alt=media&token=897eb869-8dc8-4827-8c59-f74619f99a15)
+
+**Tables**
+
+The tables associated with the schemas that have been selected in your Snowflake integration will be imported. If a [comment ](https://docs.snowflake.com/en/sql-reference/sql/comment.html)is present on the table, that comment will be brought in as a description.
+
+**Columns**
+
+The columns associated with the tables will be imported into Secoda. The column name, type and comment will be brought in. Optionally, clicking the "Run Profiler" button will show a distribution of each Snowflake column.
+
+**Lineage**
+
+Table and column lineage is automatically imported into Secoda. The last day of queries are parsed with our lineage parser to build a map of the relationships between columns and tables.
+
+![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2Fu7udA3S66j7Q9302bV27%2Fimage.png?alt=media&token=cb69a514-57c6-4517-9cd9-2caf39c43e99)
+
+**Queries**
+
+The queries from the last day of query history in Snowflake will be brought in and automatically associated with the tables that they reference.

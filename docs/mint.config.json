@@ -1,0 +1,185 @@
+{
+  "navigation": [
+    {
+      "group": "Welcome",
+      "pages": ["introduction"]
+    },
+    {
+      "group": "Getting Started",
+      "pages": [
+        "getting-started",
+        "getting-started/connect-your-data",
+        "getting-started/define-service-accounts",
+        "getting-started/hide-unwanted-datasets",
+        "getting-started/add-documentation",
+        "getting-started/publishing",
+        "getting-started/preview-workspace",
+        "getting-started/invite-teammates",
+        "getting-started/connect-to-slack"
+      ]
+    },
+    {
+      "group": "Secoda for Business Users",
+      "pages": [
+        "secoda-for-business-users",
+        "secoda-for-business-users/search-and-home-page",
+        "secoda-for-business-users/collections-in-secoda",
+        "secoda-for-business-users/dictionary-and-documents",
+        "secoda-for-business-users/ask-questions-in-secoda",
+        "secoda-for-business-users/slack-integration"
+      ]
+    },
+    {
+      "group": "Integrations",
+      "pages": [
+        "integrations",
+        "integrations/snowflake-integration",
+        "integrations/snowflake-integration/snowflake",
+        "integrations/snowflake-integration/snowflake-metadata",
+        "integrations/bigquery-integration",
+        "integrations/bigquery-integration/big-query",
+        "integrations/bigquery-integration/bigquery-metadata",
+        "integrations/postgres-integration",
+        "integrations/postgres-integration/postgres",
+        "integrations/postgres-integration/postgres-metadata",
+        "integrations/redshift-integration",
+        "integrations/redshift-integration/redshift",
+        "integrations/redshift-integration/redshift-metadata",
+        "integrations/databricks-integration",
+        "integrations/mysql-integration",
+        "integrations/microsoft-sql-server",
+        "integrations/oracle-integration",
+        "integrations/looker-integration",
+        "integrations/looker-integration/looker",
+        "integrations/looker-integration/looker-metadata",
+        "integrations/tableau-integration",
+        "integrations/tableau-integration/tableau",
+        "integrations/tableau-integration/tableau-metadata",
+        "integrations/metabase",
+        "integrations/mode",
+        "integrations/redash",
+        "integrations/google-data-studio",
+        "integrations/power-bi",
+        "integrations/dbt",
+        "integrations/dbt-core",
+        "integrations/airflow",
+        "integrations/hightouch",
+        "integrations/linear-integration",
+        "integrations/polytomic",
+        "integrations/fivetran-integration",
+        "integrations/amplitude-integration",
+        "integrations/great-expectations-integration",
+        "integrations/aws-glue-integration",
+        "integrations/git-integration",
+        "integrations/connecting-via-ssh-tunnel",
+        "integrations/connecting-via-vpc-peering"
+      ]
+    },
+    {
+      "group": "Features",
+      "pages": [
+        "features/search",
+        "features/publishing",
+        "features/data-inbox",
+        {
+          "group": "Data Management",
+          "pages": [
+            "features/data-management/documenting-a-resource",
+            "features/data-management/editing-descriptions",
+            "features/data-management/bulk-editing-resources",
+            "features/data-management/publishing-resources",
+            "features/data-management/sharing-resources",
+            "features/data-management/auto-pii-tagging",
+            "features/data-management/assigning-owners",
+            "features/data-management/adding-custom-properties",
+            "features/data-management/activity-log",
+            "features/data-management/column-profiling",
+            "features/data-management/removing-stale-data",
+            "features/data-management/adding-to-collections",
+            "features/data-management/import-and-export-data"
+          ]
+        },
+        {
+          "group": "Managing Collections",
+          "pages": [
+            "features/collections",
+            "features/collections/adding-resources",
+            "features/collections/pinning-to-homepage",
+            "features/collections/creating-sub-collections",
+            "features/collections/sharing-collections"
+          ]
+        },
+        "features/metrics",
+        "features/metrics/documenting-metrics",
+        "features/metrics/custom-properties",
+        "features/metrics/metrics-templates",
+        "features/metrics/dbt-metrics-layer-integration",
+        "features/embeds",
+        "features/docs",
+        "features/docs/using-docs",
+        "features/docs/running-queries-in-secoda",
+        "features/docs/adding-live-charts-to-documentation",
+        "features/docs/custom-properties",
+        "features/docs/documenting-queries",
+        "features/data-requests",
+        "features/data-lineage",
+        "features/personalization",
+        "features/slack-connection",
+        {
+          "group": "Data Requests",
+          "pages": [
+            "features/data-requests/answering-questions",
+            "features/data-requests/asking-questions-from-slack",
+            "features/data-requests/assigning-ownership",
+            "features/data-requests/question-status",
+            "features/data-requests/templates"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "User Management",
+      "pages": [
+        "user-management",
+        "user-management/roles",
+        "user-management/custom-invitation-links",
+        "user-management/resource-permissions",
+        "user-management/integration-permissions",
+        "user-management/groups"
+      ]
+    },
+    {
+      "group": "Notifications",
+      "pages": ["notifications"]
+    },
+    {
+      "group": "Self-hosting",
+      "pages": ["self-hosted-secoda"]
+    },
+    {
+      "group": "API",
+      "pages": [
+        "secoda-api",
+        "secoda-api/authentication",
+        "secoda-api/user-management",
+        "secoda-api/tables",
+        "secoda-api/dictionary-terms",
+        "secoda-api/collections",
+        "secoda-api/dbt-integration"
+      ]
+    },
+    {
+      "group": "FAQ",
+      "pages": ["faq"]
+    },
+    {
+      "group": "Policies",
+      "pages": [
+        "policies",
+        "policies/terms-of-use",
+        "policies/privacy-policy",
+        "policies/security-policy"
+      ]
+    }
+  ]
+}

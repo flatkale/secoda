@@ -1,0 +1,33 @@
+---
+title: "DBT Integration"
+description: "How to manage dbt with the Secoda API"
+---
+
+## Extract From Manifest File
+
+Endpoint
+
+`https://api.secoda.co/integration/dbt/manifest/ `
+
+Method
+
+POST
+
+* Sample Response  
+{  
+"message":"Successfully ran extraction for dbt"  
+}
+
+* Python Example  
+import requests  
+  
+headers \= {  
+"Authorization": "Bearer <Your Key>"  
+}  
+response \= requests.post(  
+"<https://api.secoda.co/integration/dbt/manifest/>",  
+ files\={"manifest\_file": open("manifest.json", "rb")},  
+ data\={"integration\_id": "km1dhjql3xgxy9p8"},  
+ headers\=headers  
+)  
+print(response.json())

@@ -1,0 +1,49 @@
+---
+title: "Airflow Integration"
+description: "This page walks through the Secoda and Airflow integration that Secoda supports"
+---
+
+## **Getting Started with Airflow**
+
+There are three steps to get started using Airflow with Secoda:
+
+1. 1.  
+Enable the Airflow REST API
+
+2. 2.  
+Connect Airflow to Secoda
+
+3. 3.  
+Whitelist Secoda IP Address
+
+#### Enable the Airflow REST API
+
+Secoda uses the Airflow stable REST API, which is only available on Airflow v2.0+. For Secoda to retrieve metadata from Airflow, you need to enable your Airflow's REST API. To do this, edit your `airflow.cfg` file and change the line below to `airflow.api.auth.backend.basic_auth`\\
+
+\[api\] auth\_backend = airflow.api.auth.backend.deny\_all
+
+After changing this is what the line should look like:
+
+\[api\] auth\_backend = airflow.api.auth.backend.basic\_auth
+
+#### Connect Airflow to Secoda
+
+After enabling the Airflow REST API, the next step is to connect Secoda:
+
+1. 1.  
+In the Secoda App, select ‘Add Integration’ on the Integrations tab
+
+2. 2.  
+Search for and select ‘Airflow’
+
+3. 3.  
+Enter your Airflow user and password. This information is kept encrypted.
+
+4. 4.  
+Click 'Connect'
+
+### Security
+
+VPCs keep servers inaccessible to traffic from the internet. With VPC, you’re able to designate specific web servers access to your servers. In this case, you will be whitelisting the Secoda IPs to read from your Airflow instance.
+
+Allow Secoda to access your Airflow API from the IP address `35.175.75.15/32`
