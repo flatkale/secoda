@@ -14,12 +14,16 @@
   },
   "topbarLinks": [
     {
-      "name": "Book a Demo",
+      "name": "Login",
+      "url": "https://www.secoda.co/sign-up"
+    },
+    {
+      "name": "Book a demo",
       "url": "https://www.secoda.co/sign-up"
     }
   ],
   "topbarCtaButton": {
-    "name": "Sign Up",
+    "name": "Start for free",
     "url": "https://app.secoda.co/auth/realms/master/protocol/openid-connect/registrations?client_id=secoda-frontend&response_type=code&scope=openid%20email&redirect_uri=https://app.secoda.co&kc_locale=en"
   },
   "anchors": [
@@ -31,7 +35,6 @@
     {
       "name": "Community",
       "icon": "comments",
-      "color": "#f59f0b",
       "url": "https://secodacommunity.slack.com/join/shared_invite/zt-mhnu278g-FktKZmZ51SDQtlu3NRAxqg#/shared-invite/email"
     }
   ],
