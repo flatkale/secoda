@@ -2,15 +2,15 @@
   "name": "Secoda",
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/light.svg"
+    "dark": "/logo/dark.svg"
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#1f93ff",
-    "light": "#45a5ff",
-    "dark": "#1174d1",
-    "ultraLight": "#87c5ff",
-    "ultraDark": "#095fb0"
+    "primary": "#EC7345",
+    "light": "#FE7B67",
+    "dark": "#D76134",
+    "ultraLight": "#F8F3F0",
+    "ultraDark": "#B73C0D"
   },
   "topbarLinks": [
     {
