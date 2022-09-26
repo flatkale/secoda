@@ -1,108 +1,119 @@
 ---
 title: "AWS Glue Integration"
-description: "How to Integrate Secoda with AWS Glue, and what information and metadata is pulled from AWS Glue."
+description:
+  "How to Integrate Secoda with AWS Glue, and what information and metadata is
+  pulled from AWS Glue."
 ---
 
-## Integrating Secoda with AWS Glue 
+## Integrating Secoda with AWS Glue
 
-The AWS Glue integration will pull metadata from your AWS Glue Catalog and the associated lineage information from the data sources for Glue. To connect AWS Glue to Secoda you'll need to create an IAM user that has permission to get Glue objects. Follow the instructions below to set up that user.
+The AWS Glue integration will pull metadata from your AWS Glue Catalog and the
+associated lineage information from the data sources for Glue. To connect AWS
+Glue to Secoda you'll need to create an IAM user that has permission to get Glue
+objects. Follow the instructions below to set up that user.
 
-Log in to your [AWS console](https://us-east-1.console.aws.amazon.com/console/home?region=us-east-1) and then to the [IAM management console](https://us-east-1.console.aws.amazon.com/iamv2/home?region=us-east-1#/home)
+Log in to your
+[AWS console](https://us-east-1.console.aws.amazon.com/console/home?region=us-east-1)
+and then to the
+[IAM management console](https://us-east-1.console.aws.amazon.com/iamv2/home?region=us-east-1#/home)
 
 Create a new IAM user by clicking "Add users"
 
-
 ![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2FZTgGhN6lBEr45BWoSdQE%2Fimage.png?alt=media&token=9cc47918-2585-4ffd-a4b8-d2d2f63ef6bb)
 
-
-Select "**Access key - Programmatic access"** under the "Select AWS access type" section and click "Next"
-
+Select "**Access key - Programmatic access"** under the "Select AWS access type"
+section and click "Next"
 
 ![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2FUnz4axlRe9UixquspYnR%2Fimage.png?alt=media&token=b83a21f3-46dc-4a07-a46b-abdbd35b1932)
 
-
-In the permissions section, select "Attach existing policies directly" and then click "Create policy".
-
+In the permissions section, select "Attach existing policies directly" and then
+click "Create policy".
 
 ![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2FrfxnLaz0HE0LV0PSsMCI%2Fimage.png?alt=media&token=4ea50637-5e9e-44e5-8001-7b00855b3abc)
 
+Select the "JSON" option and paste in the following policy. Make sure to replace
+\<aws_region\> and \<aws_account_id\> with the proper values. Then create the
+policy and return to the previous page for the IAM user creation.
 
-Select the "JSON" option and paste in the following policy. Make sure to replace <aws\_region> and <aws\_account\_id> with the proper values. Then create the policy and return to the previous page for the IAM user creation.
+```json
+{
+
+"Version": "2012-10-17",
+
+"Statement": \[
 
 {
 
- "Version": "2012-10-17",
+"Sid": "VisualEditor0",
 
- "Statement": \[
+"Effect": "Allow",
 
- {
+"Action": \[
 
- "Sid": "VisualEditor0",
+"glue:GetDataflowGraph",
 
- "Effect": "Allow",
+"glue:GetJobs",
 
- "Action": \[
+"glue:GetTable",
 
- "glue:GetDataflowGraph",
+"s3:GetBucketLocation",
 
- "glue:GetJobs",
+"s3:GetObject",
 
- "glue:GetTable",
+"s3:ListBucket",
 
- "s3:GetBucketLocation",
+"s3:ListBucketMultipartUploads",
 
- "s3:GetObject",
+"s3:AbortMultipartUpload",
 
- "s3:ListBucket",
+"s3:PutObject",
 
- "s3:ListBucketMultipartUploads",
+"s3:ListMultipartUploadParts",
 
- "s3:AbortMultipartUpload",
+"lambda:InvokeFunction",
 
- "s3:PutObject",
+"athena:GetWorkGroup",
 
- "s3:ListMultipartUploadParts",
+"athena:StartQueryExecution",
 
- "lambda:InvokeFunction",
+"athena:StopQueryExecution",
 
- "athena:GetWorkGroup",
+"athena:GetQueryExecution",
 
- "athena:StartQueryExecution",
+"athena:GetQueryResults",
 
- "athena:StopQueryExecution",
+\],
 
- "athena:GetQueryExecution",
+"Resource": \[
 
- "athena:GetQueryResults",
+"arn:aws:athena:\*:<athena_id>:workgroup/primary",
 
- \],
+"arn:aws:s3:::<athena_output_bucket>",
 
- "Resource": \[
+"arn:aws:s3:::<athena_output_bucket>/\*",
 
- "arn:aws:athena:\*:<athena\_id>:workgroup/primary",
+"arn:aws:glue:<region>:<glue_id>:\*"
 
- "arn:aws:s3:::<athena\_output\_bucket>",
+"arn:aws:s3:::<glue_bucket>",
 
- "arn:aws:s3:::<athena\_output\_bucket>/\*",
+"arn:aws:s3:::<glue_bucket>/\*",
 
- "arn:aws:glue:<region>:<glue\_id>:\*"
-
- "arn:aws:s3:::<glue\_bucket>",
-
- "arn:aws:s3:::<glue\_bucket>/\*",
-
- \]
-
- }
-
- \]
+\]
 
 }
 
-Refresh the policy list and search for your newly created policy. Select that policy and then create the user. 
+\]
 
+}
+```
+
+Refresh the policy list and search for your newly created policy. Select that
+policy and then create the user.
 
 ![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2FCvt7qla3v0z2jGLPfgbZ%2Fimage.png?alt=media&token=c2a9cac1-25cf-46e4-9b23-a85456c2d1eb)
 
-
-Copy the Access Key ID and Secret Access Key that is generated for the user. Return to https://app.secoda.co/integrations and select the AWS Glue integration. Input your region, access key ID and secret access key and click "Test Connection". After the connection is established click "Run initial extraction" to begin the process of syncing your Glue Data Catalog. 
+Copy the Access Key ID and Secret Access Key that is generated for the user.
+Return to https://app.secoda.co/integrations and select the AWS Glue
+integration. Input your region, access key ID and secret access key and click
+"Test Connection". After the connection is established click "Run initial
+extraction" to begin the process of syncing your Glue Data Catalog.

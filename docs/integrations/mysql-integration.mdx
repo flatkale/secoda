@@ -14,23 +14,28 @@ There are three steps to get started using MySQL with Secoda:
 
 #### Create a Database User
 
-The username and password you’ve already created for your cluster is your admin password, which you should keep for your own usage. For Secoda, and any other 3rd-parties, it is best to create distinct users.
+The username and password you’ve already created for your cluster is your admin
+password, which you should keep for your own usage. For Secoda, and any other
+3rd-parties, it is best to create distinct users.
 
-To create a new user, you’ll need to log into the MySQL database directly and run the following SQL commands:
+To create a new user, you’ll need to log into the MySQL database directly and
+run the following SQL commands:
 
-\-- Create a user named "secoda" that Secoda will use when connecting to your MySQL database.
+\-- Create a user named "secoda" that Secoda will use when connecting to your
+MySQL database.
 
-CREATE USER 'secoda'@'localhost' IDENTIFIED BY '<enter password here>';
+CREATE USER 'secoda'@'localhost' IDENTIFIED BY \<enter password here\>;
 
 \-- Complete this query for any databases you would like Secoda to extract from
 
-GRANT SELECT ON <database_name>.\* TO 'secoda'@'localhost';
+GRANT SELECT ON \<database_name\>.\* TO 'secoda'@'localhost';
 
 \-- Complete this query for any schemas you would like Secoda to extract from
 
-GRANT SELECT ON <schema_name>.\* TO 'secoda'@'localhost';
+GRANT SELECT ON \<schema_name\>.\* TO 'secoda'@'localhost';
 
-When connecting to MySQL in Secoda, use the username/password you’ve created here instead of your admin account.
+When connecting to MySQL in Secoda, use the username/password you’ve created
+here instead of your admin account.
 
 #### Connect MySQL to Secoda
 
@@ -46,6 +51,8 @@ After creating a MySQL user, the next step is to connect Secoda:
 
 ### Security
 
-VPCs keep servers inaccessible to traffic from the internet. With VPC, you’re able to designate specific web servers access to your servers. In this case, you will be whitelisting the Secoda IPs to read from your data warehouse.
+VPCs keep servers inaccessible to traffic from the internet. With VPC, you’re
+able to designate specific web servers access to your servers. In this case, you
+will be whitelisting the Secoda IPs to read from your data warehouse.
 
 Allow Secoda to read into your MySQL database using`35.175.75.15/32`

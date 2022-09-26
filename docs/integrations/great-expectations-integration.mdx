@@ -1,13 +1,16 @@
 ---
 title: "Great Expectations Integration"
-description: "This page walks through the Secoda and GE integration that Secoda supports"
+description:
+  "This page walks through the Secoda and GE integration that Secoda supports"
 ---
 
-Secoda currently supports retrieving expectation and validation metadata from Google Cloud Storage.
+Secoda currently supports retrieving expectation and validation metadata from
+Google Cloud Storage.
 
 ## Getting Started with Great Expectations
 
-There are two steps to get started using Great Expectations with Secoda through Google Cloud Storage:
+There are two steps to get started using Great Expectations with Secoda through
+Google Cloud Storage:
 
 1. Create a service account for Secoda
 
@@ -15,9 +18,15 @@ There are two steps to get started using Great Expectations with Secoda through 
 
 ### Create a service account for Secoda
 
-To provide [least privilege](https://en.wikipedia.org/wiki/Principle%5Fof%5Fleast%5Fprivilege) to Secoda for extracting Big Query metadata, you can create a new service account following the steps below. Refer to [Google Cloud’s documentation about service accounts](https://cloud.google.com/iam/docs/creating-managing-service-accounts) for more information.
+To provide
+[least privilege](https://en.wikipedia.org/wiki/Principle%5Fof%5Fleast%5Fprivilege)
+to Secoda for extracting Big Query metadata, you can create a new service
+account following the steps below. Refer to
+[Google Cloud’s documentation about service accounts](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
+for more information.
 
-1. From the Navigation panel on the left, go to **IAM & admin** \> **Service accounts**
+1. From the Navigation panel on the left, go to **IAM & admin** \> **Service
+   accounts**
 
 2. Click **Create Service Account** along the top
 
@@ -27,12 +36,16 @@ To provide [least privilege](https://en.wikipedia.org/wiki/Principle%5Fof%5Fleas
 
 Storage Object Viewer
 
-5\. [Create a JSON key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). The downloaded file will be used to create your warehouse in the next section.
+5\.
+[Create a JSON key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys).
+The downloaded file will be used to create your warehouse in the next section.
 
 ### Connect Google Cloud Storage to Secoda
 
-1. Log into your Secoda profile at <https://app.secoda.co>
+1. Log into your Secoda profile at https://app.secoda.co
 
-2. From the Navigation panel on the left go **Integrations** \> **Add new integration**
+2. From the Navigation panel on the left go **Integrations** \> **Add new
+   integration**
 
-3. Select **Great Expectations** and fill in the fields based off the Great Expectations Data Context YAML file.
+3. Select **Great Expectations** and fill in the fields based off the Great
+   Expectations Data Context YAML file.

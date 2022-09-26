@@ -1,6 +1,8 @@
 ---
 title: "Oracle Integration"
-description: "This page walks through the Secoda and Oracle integration that Secoda supports"
+description:
+  "This page walks through the Secoda and Oracle integration that Secoda
+  supports"
 ---
 
 ## **Getting Started with Oracle**
@@ -15,21 +17,26 @@ There are three steps to get started using Oracle with Secoda:
 
 #### Create a Database User
 
-The username and password you’ve already created for your database is your admin password, which you should keep for your own usage. For Secoda, and any other 3rd-parties, it is best to create distinct users.
+The username and password you’ve already created for your database is your admin
+password, which you should keep for your own usage. For Secoda, and any other
+3rd-parties, it is best to create distinct users.
 
-To create a new user, you’ll need to log into the Oracle database directly and run the following SQL commands:
+To create a new user, you’ll need to log into the Oracle database directly and
+run the following SQL commands:
 
 \-- Create a secoda user
 
-CREATE USER secoda IDENTIFIED BY '<password>';
+CREATE USER secoda IDENTIFIED BY '\<password\>';
 
 \-- Run this query for any schemas you'd like to import into Secoda
 
 BEGIN
 
-FOR table IN (SELECT owner, table_name FROM all_tables WHERE owner='<schema>') LOOP
+FOR table IN (SELECT owner, table_name FROM all_tables WHERE owner='\<schema\>')
+LOOP
 
-EXECUTE IMMEDIATE 'grant select on '||table.owner||'.'||table.table_name||' to secoda';
+EXECUTE IMMEDIATE 'grant select on '||table.owner||'.'||table.table_name||' to
+secoda';
 
 END LOOP;
 
@@ -37,9 +44,12 @@ END;
 
 #### Whitelist Secoda IP Address
 
-VPCs keep servers inaccessible to traffic from the internet. With VPC, you’re able to designate specific web servers access to your servers. In this case, you will be whitelisting the Secoda IPs to read from your data warehouse.
+VPCs keep servers inaccessible to traffic from the internet. With VPC, you’re
+able to designate specific web servers access to your servers. In this case, you
+will be whitelisting the Secoda IPs to read from your data warehouse.
 
-Allow Secoda to read into your Oracle database from `35.175.75.15/32` and `34.230.160.245/32`
+Allow Secoda to read into your Oracle database from `35.175.75.15/32` and
+`34.230.160.245/32`
 
 ---
 
@@ -47,7 +57,8 @@ Allow Secoda to read into your Oracle database from `35.175.75.15/32` and `34.23
 
 After creating a Oracle user, the next step is to connect Secoda:
 
-1. In the Secoda App, select "New Integration" from <https://app.secoda.co/integrations>
+1. In the Secoda App, select "New Integration" from
+   https://app.secoda.co/integrations
 
 2. Search for and select "Oracle"
 

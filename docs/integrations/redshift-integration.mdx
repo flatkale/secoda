@@ -7,24 +7,35 @@ description: "An overview of the Secoda integration with Redshift"
 
 [Redshift Metadata](/integrations/redshift-integration/redshift-metadata)
 
-After connecting Redshift to Secoda, to view the metadata associated with one of your Redshift tables, visit the [catalog](https://app.secoda.co/catalog) page and click on the title of your Redshift table. That link will bring you to the following page.
+After connecting Redshift to Secoda, to view the metadata associated with one of
+your Redshift tables, visit the [catalog](https://app.secoda.co/catalog) page
+and click on the title of your Redshift table. That link will bring you to the
+following page.
 
 ![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2F16SKCKhv6R6APUvYVw8l%2Fimage.png?alt=media&token=ec2cd805-2c0f-4522-aae6-6e97f00123f4)
 
 **Tables**
 
-The tables associated with the schemas that have been selected in your Redshift integration will be imported. If a [comment ](https://docs.snowflake.com/en/sql-reference/sql/comment.html)is present on the table, that comment will be brought in as a description.
+The tables associated with the schemas that have been selected in your Redshift
+integration will be imported. If a
+[comment ](https://docs.snowflake.com/en/sql-reference/sql/comment.html)is
+present on the table, that comment will be brought in as a description.
 
 **Columns**
 
-The columns associated with the tables will be imported into Secoda. The column name, type primary key, and comment will be brought in. Optionally, clicking the "Run Profiler" button will show a distribution of each Redshift column.
+The columns associated with the tables will be imported into Secoda. The column
+name, type primary key, and comment will be brought in. Optionally, clicking the
+"Run Profiler" button will show a distribution of each Redshift column.
 
 **Lineage**
 
-Table and column lineage is automatically imported into Secoda. The last day of queries are parsed with our lineage parser to build a map of the relationships between columns and tables.
+Table and column lineage is automatically imported into Secoda. The last day of
+queries are parsed with our lineage parser to build a map of the relationships
+between columns and tables.
 
 ![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2FG71kzv3SeAPkXqshrCoZ%2Fimage.png?alt=media&token=242af420-4c84-429a-bcd9-6601b77024be)
 
 **Queries**
 
-The queries from the last day of query history in Redshift will be brought in and automatically associated with the tables that they reference.
+The queries from the last day of query history in Redshift will be brought in
+and automatically associated with the tables that they reference.

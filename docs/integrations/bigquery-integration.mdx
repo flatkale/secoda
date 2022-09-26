@@ -7,24 +7,35 @@ description: "An overview for the BigQuery integration with Secoda"
 
 [BigQuery Metadata](/integrations/bigquery-integration/bigquery-metadata)
 
-After connecting BigQuery to Secoda, to view the metadata associated with one of your BigQuery tables, visit the [catalog](https://app.secoda.co/catalog) page and click on the title of your BigQuery table. That link will bring you to the following page.
+After connecting BigQuery to Secoda, to view the metadata associated with one of
+your BigQuery tables, visit the [catalog](https://app.secoda.co/catalog) page
+and click on the title of your BigQuery table. That link will bring you to the
+following page.
 
 ![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2FP14nKeWhcAm5sRcogVSS%2Fimage.png?alt=media&token=36d0c148-2b6a-4969-b59c-416846ff00c2)
 
 **Tables**
 
-The tables associated with the schemas that have been selected in your BigQuery integration will be imported. If a [comment ](https://docs.snowflake.com/en/sql-reference/sql/comment.html)is present on the table, that comment will be brought in as a description.
+The tables associated with the schemas that have been selected in your BigQuery
+integration will be imported. If a
+[comment ](https://docs.snowflake.com/en/sql-reference/sql/comment.html)is
+present on the table, that comment will be brought in as a description.
 
 **Columns**
 
-The columns associated with the tables will be imported into Secoda. The column name, type and comment will be brought in. Optionally, clicking the "Run Profiler" button will show a distribution of each BigQuery column.
+The columns associated with the tables will be imported into Secoda. The column
+name, type and comment will be brought in. Optionally, clicking the "Run
+Profiler" button will show a distribution of each BigQuery column.
 
 **Lineage**
 
-Table and column lineage is automatically imported into Secoda. The last day of queries are parsed with our lineage parser to build a map of the relationships between columns and tables.
+Table and column lineage is automatically imported into Secoda. The last day of
+queries are parsed with our lineage parser to build a map of the relationships
+between columns and tables.
 
 ![](https://3544070331-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FqxbfBjqa19PllrcxgKxO%2Fuploads%2Fer8797eHSbBp5lXqJcLh%2Fimage.png?alt=media&token=5094eef4-1474-4714-9b53-17df4001c951)
 
 **Queries**
 
-The queries from the last day of query history in BigQuery will be brought in and automatically associated with the tables that they reference.
+The queries from the last day of query history in BigQuery will be brought in
+and automatically associated with the tables that they reference.
