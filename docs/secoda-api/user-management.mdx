@@ -1,40 +1,43 @@
 ---
 title: "Managing invitations"
 description: "How to manage users with the Secoda API"
+api: "POST https://api.secoda.co/user/invite/"
+auth: "bearer"
 ---
 
 ## Invite a New User
 
-Endpoint
+<Note>
+The **Endpoint** field for self-hosted instances is `<host_url>/api/v1/dictionary/invite/`For example, https://secoda.company.com/api/v1/user/invite/
+</Note>
 
-`https://api.secoda.co/user/invite/`
+### Parameters
 
-Method
+<ParamField body="email" required type="string">
+  The email of the user you're inviting.
+</ParamField>
 
-POST
+<ParamField body="role" type="string">
+  The role of the user you're inviting.
+</ParamField>
 
-Accepted Body Parameters
+<Note>
+  Not using Secoda to manage your data documentation yet? Sign up for free
+  [here](https://app.secoda.co) 👈
+</Note>
 
-email, role
-
-The **Endpoint** field for self-hosted instances is `\<host`\_`url>/api/v1/dictionary/invite/`For example, https://secoda.company.com/api/v1/user/invite/
-
-```json Sample Response
-{
-  "msg": "Invitation sent to kash@secoda.co"
-}
-```
+<RequestExample>
 
 ```python Python Example
 import requests
 
-headers \= {
+headers = {
 "Authorization": "Bearer <Your Key>"
 }
-response \= requests.post(
+response = requests.post(
 "<https://api.secoda.co/user/invite/>",
- headers\=headers,
- json\={
+headers=headers,
+json={
 'email': 'kash@secoda.co',
 'role': 'Admin'
 }
@@ -42,4 +45,14 @@ response \= requests.post(
 print(response.json())
 ```
 
-Not using Secoda to manage your data documentation yet? Sign up for free [here](https://app.secoda.co) 👈
+</RequestExample>
+
+<ResponseExample>
+
+```json Sample Response
+{
+  "msg": "Invitation sent to kash@secoda.co"
+}
+```
+
+</ResponseExample>

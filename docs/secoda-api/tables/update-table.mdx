@@ -1,0 +1,45 @@
+---
+title: "Update Table"
+auth: "bearer"
+api: "PUT https://api.secoda.co/table/{id}"
+---
+
+## Path Parameter
+
+<ParamField path="id" required />
+
+## Body Parameters
+
+<ParamField body="owners" type="String[]">
+  A list of emails of the owners.
+</ParamField>
+
+<ParamField body="tags" />
+
+<RequestExample>
+
+```python Python Example
+import requests
+
+headers = {
+"Authorization": "Bearer <Your Key>"
+}
+response = requests.put(
+"<https://api.secoda.co/table/7o7y2s75ktirezg6__bigquery__secoda-web__dbt_amcewen__customers>",
+ headers=headers,
+ json={"owners": ["kash@secoda.co"]}
+)
+print(response.json())
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Sample Response
+{
+  "msg": "Successfully updated table"
+}
+```
+
+</ResponseExample>

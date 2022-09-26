@@ -1,0 +1,34 @@
+---
+title: "Delete Table Column"
+auth: "bearer"
+api: "DELETE https://api.secoda.co/table/{id}/columns"
+---
+
+## Path Parameter
+
+<ParamField path="id" required />
+
+## Query Parameter
+
+<ParamField query="col_name" required type="string">
+  The column name
+</ParamField>
+
+<ParamField body="name" />
+
+<RequestExample>
+
+```python Python Example
+import requests
+
+headers = {
+"Authorization": "Bearer <Your Key>"
+}
+response = requests.delete(
+"<https://api.secoda.co/table/7o7y2s75ktirezg6__bigquery__secoda-web__dbt_amcewen__customers/columns?name=number_of_orders>",
+ headers=headers
+)
+print(response.json())
+```
+
+</RequestExample>

@@ -1,0 +1,110 @@
+---
+title: "Get All Table Columns"
+auth: "bearer"
+api: "GET https://api.secoda.co/table/{id}/columns"
+---
+
+## Path Parameter
+
+<ParamField path="id" required />
+
+<RequestExample>
+
+```python Python Example
+import requests
+
+headers = {
+"Authorization": "Bearer <Your Key>"
+}
+response = requests.get(
+"<https://api.secoda.co/table/7o7y2s75ktirezg6__bigquery__secoda-web__dbt_amcewen__customers/columns>",
+ headers=headers
+)
+print(response.json())
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Sample Response
+{
+  "page": 1,
+  "size": 6,
+  "results": [
+    {
+      "id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers~customer_id",
+      "neo4j_id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers~customer_id",
+      "created_at": "None",
+      "updated_at": "None",
+      "tags": ["3xqw7edwbro7m571"],
+      "name": "customer_id",
+      "col_type": "INTEGER",
+      "owners": ["andrew@secoda.co"],
+      "badges": "None"
+    },
+    {
+      "id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers~first_name",
+      "neo4j_id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers~first_name",
+      "created_at": "None",
+      "updated_at": "None",
+      "tags": ["2w1dot2hn6ksmskj"],
+      "name": "first_name",
+      "col_type": "STRING",
+      "owners": [
+        "mark@secoda.co",
+        "kash@secoda.co",
+        "andrew@secoda.co",
+        "andrewmcewen96@gmail.com"
+      ],
+      "badges": "None"
+    },
+    {
+      "id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers~last_name",
+      "neo4j_id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers~last_name",
+      "created_at": "None",
+      "updated_at": "None",
+      "tags": ["ck7mwwfea59bbn7r"],
+      "name": "last_name",
+      "col_type": "STRING",
+      "owners": ["andrewmcewen96@gmail.com", "kash@secoda.co"],
+      "badges": "None"
+    },
+    {
+      "id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers~first_order_date",
+      "neo4j_id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers~first_order_date",
+      "created_at": "None",
+      "updated_at": "None",
+      "tags": ["ck7mwwfea59bbn7r"],
+      "name": "first_order_date",
+      "col_type": "DATE",
+      "owners": ["mark@secoda.co"],
+      "badges": "None"
+    },
+    {
+      "id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers~most_recent_order_date",
+      "neo4j_id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers~most_recent_order_date",
+      "created_at": "None",
+      "updated_at": "None",
+      "tags": ["2w1dot2hn6ksmskj"],
+      "name": "most_recent_order_date",
+      "col_type": "DATE",
+      "owners": ["kash@secoda.co"],
+      "badges": "None"
+    },
+    {
+      "id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers~number_of_orders",
+      "neo4j_id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers~number_of_orders",
+      "created_at": "None",
+      "updated_at": "None",
+      "tags": [],
+      "name": "number_of_orders",
+      "col_type": "INTEGER",
+      "owners": ["andrew@secoda.co"],
+      "badges": "None"
+    }
+  ]
+}
+```
+
+</ResponseExample>

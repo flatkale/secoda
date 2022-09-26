@@ -1,0 +1,70 @@
+---
+title: "Get Specific Table"
+auth: "bearer"
+api: "GET https://api.secoda.co/table/{id}"
+---
+
+## Path Parameter
+
+<ParamField path="id" required />
+
+<RequestExample>
+
+```python Python Example
+import requests
+
+headers = {
+"Authorization": "Bearer <Your Key>"
+}
+response = requests.get(
+"<https://api.secoda.co/table/7o7y2s75ktirezg6__bigquery__secoda-web__dbt_amcewen__customers>",
+ headers=headers
+)
+print(response.json())
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Sample Response
+{
+  "id": "7o7y2s75ktirezg6__bigquery__secoda-web__dbt_amcewen__customers",
+  "neo4j_id": "7o7y2s75ktirezg6~bigquery://secoda-web.dbt_amcewen/customers",
+  "created_at": "None",
+  "updated_at": "None",
+  "tags": ["7o7y2s75ktirezg6~dbt_tag"],
+  "name": "customers",
+  "schema": "dbt_amcewen",
+  "cluster": "secoda-web",
+  "database": "bigquery",
+  "owners": "None",
+  "description": "Description of table",
+  "columns": [
+    "customer_id",
+    "first_name",
+    "last_name",
+    "first_order_date",
+    "most_recent_order_date",
+    "number_of_orders"
+  ],
+  "queries": [
+    {
+      "description": "None",
+      "query_text": "create or replace table `secoda-web`.`dbt_amcewen`.`customers`\\n\\n\\n  OPTIONS()\\n  as (\\n    with customers as (\\n\\n    select * from `secoda-web`.`dbt_amcewen`.`stg_customers`\\n\\n),\\n\\norders as (\\n\\n    select * from `secoda-web`.`dbt_amcewen`.`stg_orders`\\n\\n),\\n\\ncustomer_orders as (\\n\\n    select\\n        customer_id,\\n\\n        min(order_date) as first_order_date,\\n        max(order_date) as most_recent_order_date,\\n        count(order_id) as number_of_orders\\n\\n    from orders\\n\\n    group by 1\\n\\n),\\n\\n\\nfinal as (\\n\\n    select\\n        customers.customer_id,\\n        customers.first_name,\\n        customers.last_name,\\n        customer_orders.first_order_date,\\n        customer_orders.most_recent_order_date,\\n        coalesce(customer_orders.number_of_orders, 0) as number_of_orders\\n\\n    from customers\\n\\n    left join customer_orders using (customer_id)\\n\\n)\\n\\nselect * from final\\n  );",
+      "frequency": 0,
+      "last_updated_timestamp": "None",
+      "key": ""
+    },
+    {
+      "description": "None",
+      "query_text": "SELECT * FROM dbt_amcewen.customers",
+      "frequency": 0,
+      "last_updated_timestamp": "None",
+      "key": ""
+    }
+  ]
+}
+```
+
+</ResponseExample>

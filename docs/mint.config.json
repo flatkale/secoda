@@ -24,6 +24,11 @@
   },
   "anchors": [
     {
+      "name": "API Reference",
+      "icon": "rectangle-terminal",
+      "url": "secoda-api"
+    },
+    {
       "name": "Community",
       "icon": "comments",
       "color": "#f59f0b",
@@ -228,14 +233,33 @@
     {
       "group": "API",
       "pages": [
-        "secoda-api",
+        "secoda-api/introduction",
         "secoda-api/authentication",
-        "secoda-api/user-management",
-        "secoda-api/tables",
-        "secoda-api/dictionary-terms",
-        "secoda-api/collections",
-        "secoda-api/dbt-integration"
+        "secoda-api/user-management"
       ]
+    },
+    {
+      "group": "Tables",
+      "pages": [
+        "secoda-api/tables/list-all-tables",
+        "secoda-api/tables/get-table",
+        "secoda-api/tables/update-table",
+        "secoda-api/tables/get-all-columns",
+        "secoda-api/tables/update-column",
+        "secoda-api/tables/delete-column"
+      ]
+    },
+    {
+      "group": "Dictionary Terms",
+      "pages": ["secoda-api/dictionary-terms/dictionary-terms"]
+    },
+    {
+      "group": "Collections",
+      "pages": ["secoda-api/collections/collections"]
+    },
+    {
+      "group": "Integrations",
+      "pages": ["secoda-api/integrations/dbt"]
     },
     {
       "group": "FAQ",
